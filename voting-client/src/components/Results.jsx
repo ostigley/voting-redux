@@ -1,7 +1,9 @@
 import React from 'react'
 import PureRenderMixin from 'react-addons-pure-render-mixin'
 import Winner from './Winner'
-export default class Results extends React.Component {
+import {connect} from 'react-redux'
+
+export class Results extends React.Component {
 	constructor () {
 		super()
 		this.shouldComponentUpdate = PureRenderMixin.shouldComponentUpdate.bind(this)
@@ -42,3 +44,15 @@ export default class Results extends React.Component {
 			</div>
 	}
 }
+
+const mapStateToProp = (state) => {
+	return {
+		pair: state.getIn(['vote', 'pair']),
+		tally: state.getIn(['vote', 'tally']),
+		winner: state.get('winner')
+	}
+}
+
+export const ResultsContainer = connect(mapStateToProp)(Results)
+
+

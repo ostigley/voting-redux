@@ -5,8 +5,9 @@ import {renderIntoDocument,
 		Simulate
 	} from 'react-addons-test-utils'
 import {List, Map} from 'immutable'
-import Results from '../../src/components/Results'
+import {Results} from '../../src/components/Results'
 import {expect} from 'chai'
+import {connect} from 'react-redux'
 
 describe('Results', () => {
 	it('renders entries with vote counts or zero', () => {
