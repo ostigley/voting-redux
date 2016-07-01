@@ -1,7 +1,5 @@
 import {setEntries, next, vote, INITIAL_STATE} from './core'
 
-
-
 export default (state = INITIAL_STATE, action) => {
 	switch (action.type) {
 		case 'SET_ENTRIES': 
