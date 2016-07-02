@@ -1,8 +1,9 @@
-import React from 'react'
-import Winner from './Winner'
-import Vote from './Vote'
-import PureRenderMixin from 'react-addons-pure-render-mixin'
-import {connect} from 'react-redux'
+import React 								from 'react'
+import Winner 							from './Winner'
+import Vote 								from './Vote'
+import PureRenderMixin 			from 'react-addons-pure-render-mixin'
+import {connect} 						from 'react-redux'
+import * as actionCreators 	from '../action-creators.js'
 
 export class Voting extends React.Component {
 	constructor () {
@@ -20,11 +21,15 @@ export class Voting extends React.Component {
 	}
 }
 
-const mapStateToProps = (state) => {
+function mapStateToProps (state) {
 	return {
-		pair:state.getIn(['vote','pair']),
+		hasVoted: state.get('hasVoted'),
+		pair: state.getIn(['vote','pair']),
 		winner: state.get('winner')
 	}
 }
 
-export const VotingContainer = connect(mapStateToProps)(Voting)
+export const VotingContainer = connect(
+  mapStateToProps,
+  actionCreators
+)(Voting)
